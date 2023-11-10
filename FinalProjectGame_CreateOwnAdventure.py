@@ -1,27 +1,6 @@
 import json
 import random
 
-class Weapon:
-    """A class representing a weapon in the game.
-
-    Attributes:
-        name (str): The name of the weapon.
-        damage (int): The damage dealt by the weapon.
-    """
-    def __init__(self, name, damage):
-        """Initialize the Weapon class.
-
-        Args:
-            name (str): The name of the weapon.
-            damage (int): The damage dealt by the weapon.
-        """
-        self.name = name
-        self.damage = damage
-    
-    def __str__(self):
-        """Return a string representation of the weapon."""
-        return self.name 
-
 class Create_your_own_Adventure_game:
     def __init__(self, gamestory_file):
         self.story = self.load_story(gamestory_file)
@@ -69,7 +48,16 @@ class Create_your_own_Adventure_game:
 
 
 
+#example test #still incomplete 
+adventure = Create_your_own_Adventure_game("LostintheJungle.json")
 
+while adventure.current_level != "end":
+    adventure.display_current_level()
+    choice = int(input("Enter your choice: ")) - 1  #to match list index
+
+    adventure.handle_player_choice(choice)
+
+print("Yay, You managed to end your thrilling adventure.")
 
 class Player:
     """ This is a player in the game.
@@ -110,19 +98,6 @@ class Player:
         Args:
             item_name (str): The name of the item. A weapon, health item, clothing item, armor, etc.
         """
-
-sword = Weapon("Sword", 10)
-shield = Weapon("Shield", 5)
- 
-#example test #still incomplete 
-adventure = Create_your_own_Adventure_game("LostintheJungle.json")
-
-while adventure.current_level != "end":
-    adventure.display_current_level()
-    choice = int(input("Enter your choice: ")) - 1  #to match list index
-
-    adventure.handle_player_choice(choice)
-
-print("Yay, You managed to end your thrilling adventure.")
-
-        
+        items = [item for item in self.inventory if item['name'] == item_name]
+        num_of_item = len(items) 
+        print(f"Ok {self.name} you have {num_of_item} swords in your inventory.")
