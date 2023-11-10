@@ -59,5 +59,43 @@ while adventure.current_level != "end":
 
 print("Yay, You managed to end your thrilling adventure.")
 
+class Player:
+    """ This is a player in the game.
+    """
+    def __init__(self, name):
+        """Initialize the Player class.
 
-      
+        Args:
+            name (str): The name of the player.
+        """
+        self.name = name
+        self.inventory = []
+        
+    def manage_inventory(self, item):
+        """Add a new item to the inventory when the player picks something up.
+
+        Args:
+            item (str): A new item the player acquires. It could be a weapon, health item, armor, etc.
+        
+        Side Effects:
+            The player will have the item in their inventory indefinitely.
+        """
+        self.inventory.append(item)
+        print(f"{item} is now in {self.name}'s inventory.")
+    
+    def display_inventory(self):
+        """Show the contents of the inventory to the player."""
+        if not self.inventory:
+            print(f"Hey, {self.name}, your inventory is empty.")
+        else:
+            print(f"{self.name}, here's what is in your inventory:")
+            for item in self.inventory:
+                print(item)              
+            
+    def count_items(self, item_name):
+        """This will count the number of items with a specific name in the player's inventory.
+
+        Args:
+            item_name (str): The name of the item. A weapon, health item, clothing item, armor, etc.
+        """
+        
