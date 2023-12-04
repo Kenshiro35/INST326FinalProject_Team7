@@ -60,7 +60,8 @@
         "id": 8,
         "text": "You secure the rope to the tree and successfully swing into the window. You enter a room lit by torches and feel something slithering across your feet. The voice tells you that you must escape the room and you see that it is full of venomous snakes. How will you proceed?",
         "options": [
-            {"text": "You walk very slowly making no"}
+            {"text": "You walk very slowly making no sound", "next_id": 14},
+            {"text": "You run quickly, making sure not to step on any of the snakes", "next_id": 15}
         ]
     }
 ]
