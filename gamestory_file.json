@@ -1,4 +1,3 @@
-import json
 
 [
     {
@@ -11,7 +10,7 @@ import json
     },
     {
         "id": 2,
-        "text": "The left path leads to a clearing with a white sheet holding two items that you can pick up. There is a sign that states you can only choose two items. There is a machete and an axe. You are informed by the same voice, that you will be provided two items before each test. You must pick two of the items to add to your inventory."
+        "text": "The left path leads to a clearing with a white sheet holding two items that you can pick up. There is a sign that states you can only choose two items. There is a machete and a rope. You must pick one of the items to add to your inventory.",
         "options": [
             {"text": "You chose the machete", "next_id": 4},
             {"text": "You chose the rope", "next_id": 5}
@@ -19,7 +18,7 @@ import json
     },
     {
         "id": 3,
-        "text": "The right path leads to a hole where you fall into a pit of venomous Brazilian wandering spiders. One bite will harm you, but multiple bites will kill you. Your only chance to escape to climb out of the pit or sit there and accept your fate. What will you do?"
+        "text": "The right path leads to a hole where you fall into a pit of venomous Brazilian wandering spiders. One bite will harm you, but multiple bites will kill you. Your only chance to escape to climb out of the pit or sit there and accept your fate. What will you do?",
         "options": [
             {"text": "Your attempt to climb out failed. You thought you were Indiana Jones or something? The spiders' bites cause you to lose your life. Restart?", "next_id": 1},
             {"text": "You accept your fate and succumb to the spiders. Restart?", "next_id": 1}
@@ -35,9 +34,33 @@ import json
     },
     {
         "id": 5,
-        "text": "The next area leads to a temple blocked off by vines and vegetation. You see a way in through a window or a way to reach a bridge that has a door to enter the temple. You can use the rope to swing from a large tree to the open window or swing to the bridge and enter through the door."
+        "text": "The next area leads to a temple blocked off by vines and vegetation. You see a way in through a window or a way to reach a bridge that has a door to enter the temple. You can use the rope to swing from a large tree to the open window or swing to the bridge and enter through the door.",
         "options": [
-            {"text": "You chose to enter through the window", "next_id": }
+            {"text": "You chose to enter through the window", "next_id": 8},
+            {"text": "You chose to swing onto the bridge", "next_id": 9}
+        ]
+    },
+    {
+        "id": 6,
+        "text": "The left door leads to a trap room that where you do not know what the trap is. However, you scan the room and see a skeleton attached to the right wall. You do not know what the trap is. How will you proceed?",
+        "options": [
+            {"text": "You walk straight through the middle of the room", "next_id": 10},
+            {"text": "You hug the left wall believing that you will evade the trap", "next_id": 11}
+        ]
+    },
+    {
+        "id": 7,
+        "text": "The right door leads to a room with two different items you can pick up. A voice tells you that if you choose the correct item, you will be free to escape and win the game. If you choose the wrong one, you will die. The two options are an old ballpoint pen or a flawless ruby. Which will you choose?",
+        "options": [
+            {"text": "You chose the pen", "next_id": 12},
+            {"text": "You chose the ruby", "next_id": 13}
+        ]
+    },
+    {
+        "id": 8,
+        "text": "You secure the rope to the tree and successfully swing into the window. You enter a room lit by torches and feel something slithering across your feet. The voice tells you that you must escape the room and you see that it is full of venomous snakes. How will you proceed?",
+        "options": [
+            {"text": "You walk very slowly making no"}
         ]
     }
 ]
