@@ -1,0 +1,43 @@
+import json
+
+[
+    {
+        "id": 1,
+        "text": "You find yourself in a lush, dark jungle. You do not recall how you got there or why you are there. You get up and realize that there are two paths to take. Suddenly, you hear a voice that tells you, 'You must pass ten tests for your freedom or you will die in this jungle.' You scramble to choose either the left ot the right path, as you now realize how dire the situation is.",
+        "options": [
+            {"text": "Take the left path", "next_id": 2},
+            {"text": "Take the right path", "next_id": 3}
+        ]
+    },
+    {
+        "id": 2,
+        "text": "The left path leads to a clearing with a white sheet holding two items that you can pick up. There is a sign that states you can only choose two items. There is a machete and an axe. You are informed by the same voice, that you will be provided two items before each test. You must pick two of the items to add to your inventory."
+        "options": [
+            {"text": "You chose the machete", "next_id": 4},
+            {"text": "You chose the rope", "next_id": 5}
+        ] 
+    },
+    {
+        "id": 3,
+        "text": "The right path leads to a hole where you fall into a pit of venomous Brazilian wandering spiders. One bite will harm you, but multiple bites will kill you. Your only chance to escape to climb out of the pit or sit there and accept your fate. What will you do?"
+        "options": [
+            {"text": "Your attempt to climb out failed. You thought you were Indiana Jones or something? The spiders' bites cause you to lose your life. Restart?", "next_id": 1},
+            {"text": "You accept your fate and succumb to the spiders. Restart?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 4,
+        "text": "The next area leads to a temple blocked off by vines and vegetation. You use the machete to chop down the vegetation and enter the temple. The temple has a cold, mystifying air that makes you feel uneasy. A voice tells you to enter one of the two doors in front of you for your next challenge.",
+        "options": [
+            {"text": "You chose the left door", "next_id": 6},
+            {"text": "You chose the right door", "next_id": 7}
+        ]
+    },
+    {
+        "id": 5,
+        "text": "The next area leads to a temple blocked off by vines and vegetation. You see a way in through a window or a way to reach a bridge that has a door to enter the temple. You can use the rope to swing from a large tree to the open window or swing to the bridge and enter through the door."
+        "options": [
+            {"text": "You chose to enter through the window", "next_id": }
+        ]
+    }
+]
