@@ -19,7 +19,21 @@ class Weapon:
         """Return a string representation of the weapon."""
         return self.name 
 class Create_your_own_Adventure_game:
+    """A class representing an instance of a game story that can run through this script.
+    Attributes:
+        gamestory_file (json)
+    
+    """
     def __init__(self, gamestory_file):
+        """Initialize the Create_your_own_Adventure_game class to run the json file containing the story with options to pass through.
+        Args:
+            gamestory_file (json): File containin the actual options for the game, to run through this engine code. 
+            player (dict): Contain dictionary for player name, inventory options, and attributes.
+            
+        
+        
+        
+        """
         self.story = self.load_story(gamestory_file)
         self.player = {"name": "", "inventory": [], "attributes": {}}
         self.current_level = "start"
