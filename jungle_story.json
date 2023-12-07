@@ -1,0 +1,226 @@
+[
+    {
+        "id": 1,
+        "text": "You find yourself in a lush, dark jungle. You do not recall how you got there or why you are there. You get up and realize that there are two paths to take. Suddenly, you hear a voice that tells you, 'You must pass ten tests for your freedom or you will die in this jungle.' You scramble to choose either the left or the right path, as you now realize how dire the situation is.",
+        "options": [
+            {"text": "Take the left path", "next_id": 2},
+            {"text": "Take the right path", "next_id": 3}
+        ]
+    },
+    {
+        "id": 2,
+        "text": "The left path leads to a clearing with a white sheet holding two items that you can pick up. There is a sign that states you can only choose two items. There is a machete and a rope. You must pick one of the items to add to your inventory.",
+        "options": [
+            {"text": "You chose the machete", "next_id": 4},
+            {"text": "You chose the rope", "next_id": 5}
+        ] 
+    },
+    {
+        "id": 3,
+        "text": "The right path leads to a hole where you fall into a pit of venomous Brazilian wandering spiders. One bite will harm you, but multiple bites will kill you. Your only chance to escape is to climb out of the pit or sit there and accept your fate. What will you do?",
+        "options": [
+            {"text": "Your attempt to climb out failed. The spiders' bites cause you to lose your life. Restart?", "next_id": 1},
+            {"text": "You accept your fate and succumb to the spiders. Restart?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 4,
+        "text": "The next area leads to a temple blocked off by vines and vegetation. You use the machete to chop down the vegetation and enter the temple. The temple has a cold, mystifying air that makes you feel uneasy. A voice tells you to enter one of the two doors in front of you for your next challenge.",
+        "options": [
+            {"text": "You chose the left door", "next_id": 6},
+            {"text": "You chose the right door", "next_id": 7}
+        ]
+    },
+    {
+        "id": 5,
+        "text": "The next area leads to a temple blocked off by vines and vegetation. You see a way in through a window or a way to reach a bridge that has a door to enter the temple. You can use the rope to swing from a large tree to the open window or swing to the bridge and enter through the door.",
+        "options": [
+            {"text": "You chose to enter through the window", "next_id": 8},
+            {"text": "You chose to swing onto the bridge", "next_id": 9}
+        ]
+    },
+    {
+        "id": 6,
+        "text": "The left door leads to a trap room where you do not know what the trap is. However, you scan the room and see a skeleton attached to the right wall. You do not know what the trap is. How will you proceed?",
+        "options": [
+            {"text": "You walk straight through the middle of the room", "next_id": 10},
+            {"text": "You hug the left wall believing that you will evade the trap", "next_id": 11}
+        ]
+    },
+    {
+        "id": 7,
+        "text": "The right door leads to a room with two different items you can pick up. A voice tells you that if you choose the correct item, you will be free to escape and win the game. If you choose the wrong one, you will die. The two options are an old ballpoint pen or a flawless ruby. Which will you choose?",
+        "options": [
+            {"text": "You chose the pen", "next_id": 12},
+            {"text": "You chose the ruby", "next_id": 13}
+        ]
+    },
+    {
+        "id": 8,
+        "text": "You secure the rope to the tree and successfully swing into the window. You enter a room lit by torches and feel something slithering across your feet. The voice tells you that you must escape the room, and you see that it is full of venomous snakes. If your agility is higher than 3, you can quickly run by and avoid the snakes. Otherwise, you will have to attempt to slowly sneak by the snakes. How will you proceed?",
+        "options": [
+            {"text": "You walk very slowly making no sound", "next_id": 14},
+            {"text": "You run quickly, making sure not to step on any of the snakes", "next_id": 15}
+        ]
+    },
+    {
+        "id": 9,
+        "text": "You secure the rope to the tree and successfully swing onto the bridge. Suddenly, you feel the bridge collapsing under your feet. If your speed stat is above 2, you can outrun the collapsing bridge and safely reach the inside of the temple. You can also attempt to climb up to the open window. What will you do?",
+        "options": [
+            {"text": "You chose to outrun the falling bridge", "next_id": 16},
+            {"text": "You chose to climb up to the window", "next_id": 17}
+        ]
+    },
+    {
+        "id":
+
+    10,
+        "text": "You walked straight through the middle of the room and safely find that the next room leads to an exit. The voice tells you that you have won the game and can now leave to safety.",
+        "options":[
+            {"text": "You know what they say, 'Don't overthink it.' You have won, would you like to restart?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 11,
+        "text": "You hug the left wall and move gingerly to avoid any traps. Suddenly, you are moving into the opposite wall at a high speed with spikes impaling you. You triggered the trap and have lost your life. Do you wish to restart the game?",
+        "options": [
+            {"text": "The spikes got you this time. Do you wish to restart?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 12,
+        "text": "Choosing the pen drops you into a spiked pit. You have lost.",
+        "options": [
+            {"text": "Will you restart the game?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 13,
+        "text": "After picking the ruby, a door opens. You walk through and see a city full of people. The voice congratulates you and tells you that you have beaten the game.",
+        "options": [
+            {"text": "Congrats you escaped :) !! Do you wish to restart?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 14,
+        "text": "You try to sneak by the snakes, but there are just too many. You are caught and overwhelmed by the sheer number of snakes. They bite you and squeeze the life out of you.",
+        "options": [
+            {"text": "Unfortunately, you have lost :( Do you wish to restart?", "next_id": 1}
+        ] 
+    },
+    {
+        "id": 15,
+        "text": "Your attempt to run through the room of snakes succeeded. You enter the next room and are presented with a choice of two more objects, a sword or an ax. If your strength is above two, you can choose the axe. If your skill is above 2, you can choose the sword. Which one will you choose?",
+        "options": [
+            {"text": "You chose the sword", "next_id": 18},
+            {"text": "You chose the axe", "next_id": 19}
+        ]
+    },
+    {
+        "id": 16,
+        "text": "Because you have blazing speed, you were able to reach the inside of the temple. You have reached a room that contains a pen and a ruby, and are told to pick one of the two items and you will be able to escape. What will you do?",
+        "options": [
+            {"text":"You chose the pen", "next_id": 12},
+            {"text": "You chose the ruby", "next_id": 13}
+        ]
+    },
+    {
+        "id": 17,
+        "text": "Climbing up the temple to the window was working, until you remember that it is an ancient temple that is falling apart. You fall off the temple into the waiting mouths of hungry hippos. Restart?",
+        "options": [
+            {"text":"Did you know that hippos have a bite force 3 times that of a lion? You do now. Do you wish to restart?", "next_id": 1}
+        ]
+    },
+    {
+        "id": 18,
+        "text": "Sword in hand, you race into the next room. The ominous voice tells you that this is your final test and you are free to go home. Suddenly, the lights turn on in the room and you see who the voice belongs to. It is a ghastly skeleton in armor with a crown and a 7-foot longsword and shield. The figure laughs and with that same ominous voice says, 'Your final test is to beat me and you are free to go!' What will you do?",
+        "options": [
+            {"text": "Your skill is high and you are able to strike him down in one fell swoop. You escape and celebrate your victory at home with friends and family", "next_id": 1},
+            {"text": "Your fight with the skeleton begins.", "next_id": 20}
+        ]
+    },
+    {
+        "id": 19,
+        "text": "Axe in hand, you race into the next room. The ominous voice tells you that this is your final test and you are free to go home. Suddenly, the lights turn on in the room and you see who the voice belongs to. It is a ghastly skeleton in armor with a crown and a 7-foot longsword and a shield. The figure laughs and with that same ominous voice says, 'Your final test is to beat me and you are free to go!' What will you do?",
+        "options": [
+            {"text": "The power in your hands with the axe makes the skeleton tremble in fear. You take one swing and cut through his shield, sword, and body. He is defeated and you have won. You leave the temple, learning that you are more powerful than you imagined. Do you wish to restart", "next_id": 1},
+            {"text":"Your fight with the skeleton begins.", "next_id":20}
+        ]
+    },
+    {
+        "id": 20,
+        "text": "You draw your weapon and prepare yourself for the fight of your life. You shudder as you see the light reflect off the bony frame. The skeleton enters a combat stance.",
+        "options": [
+            {"text": "You charge head on", "next_id": 21},
+            {"text": "You analyze your opponent for any weaknesses", "next_id": 22}    
+        ]
+    },
+    {
+        "id": 21,
+        "text": "The skeleton is caught off guard by your brash approach and misses his swing. You knock it over with your strength and strike it once before the skeleton gets back up and prepares an attack. You can dodge left or right. Which way do you choose?",
+        "options":[
+            {"text": "Dodge right", "next_id": 23 },
+            {"text": "Dodge left", "next_id": 24}
+        ]
+    },
+    {
+        "id": 22,
+        "text": "You see that the skeleton has cracks in both of its legs. With this knowledge, you charge and take out the legs of the skeleton. The legs crumble, and now the skeleton lies defeated on the ground. You can either finish it off or try to persuade it to give you a reward.", 
+        "options":[
+            {"text": "You land a final strike on the skeleton's skull, destroying it. You exit the temple and celebrate your victory! Do you wish to restart?", "next_id": 1},
+            {"text": "You start a conversation with the skeleton to get a reward.", "next_id": 25}
+        ]
+    },
+{
+    "id": 23,
+    "text": "Dodging to the right was the right choice. The skeleton swings its longsword and misses, but you get swiped on your cheek. You feel the intensity of the battle in your heart. The skeleton is caught off guard. What will you do?",
+    "options": [
+        {"text": "You plan to counterattack", "next_id": 26},
+        {"text": "You attempt to disarm the skeleton", "next_id": 27}
+    ]
+},
+{
+    "id": 24,
+    "text": "The skeleton, deceptively strong, swings its longsword and cleaves through your body. He laughs and says 'Maybe the next one will provide more of a challenge. Do you wish to restart?",
+    "options": [
+        {"text": "Your adventure is over. Would you like to retry?", "next_id": 1}
+    ]
+},
+{
+    "id": 25,
+    "text": "You take the skeleton's crown off, and it screams as if in pain. The skeleton then slowly laughs and says, 'You fool! You have removed the one thing that was limiting my power, now you will face my true power! The skeleton now transforms into an 8-foot tall warrior and blasts you with fire magic that destroys you.",
+    "options":[
+        {"text": "Trying to reason with a monster did not work. Would you like to restart?", "next_id": 1}
+    ]
+},
+{
+    "id": 26,
+    "text": "You deliver a counterattack to the skeleton. He drops his shield and is wide open for an attack. What will you do?",
+    "options":[
+        {"text": "You strike down the skeleton and finally put an end to the nightmare. You escape the temple and head home to rest after a weird and frightening day. Would you like to restart?", "next_id": 1},
+        {"text": "You destroy the skeleton's arms and legs, then take off its crown as a trophy.", "next_id": 25}
+    ]
+},
+{
+    "id": 27,
+    "text": "You destroyed the skeleton's shield and hit the weapon out of his hand. The sword crumbles to dust. The skeleton surrenders and tells you that you can leave or strike him down. What will you do?",
+    "options":[
+        {"text": "You walk away towards the exit, basking in your victory.", "next_id": 28},
+        {"text": "You strike down the skeleton and he crumbles into dust.", "next_id": 29}
+    ]
+},
+{
+    "id": 28,
+    "text": "Your cockiness reaps a negative result. The skeleton takes off his crown, which reveals his true form as a brutish warrior. He charges up a powerful lightning spell and hits you with it, turning you into ash.",
+    "options": [
+        {"text": "Your overconfidence lead to your downfall. Would you wish to restart?", "next_id":1}
+    ]
+},
+{
+    "id": 29,
+    "text": "After a long day filled with confusion and intensity, you have finally escaped the challenge and mysteriously appear at your home. You enter your home and immediately fall asleep on the couch. After this experience, you realize that your life may never be the same again. Thank you for playing our game!!",
+    "options":[
+        {"text": "You have completed the game. Thank you for playing! Would you like to restart and play again?", "next_id": 1}
+    ]
+}
+]

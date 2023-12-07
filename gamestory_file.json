@@ -1,12 +1,117 @@
 
 [
     {
+        "id": "Start",
+        "text": "Welcome to the Jungle!! Here, you will create your character that you will bring along on this adventure.",
+        "options":[
+            {"text": "First you will name your character", "next_id": "Character_Name"}
+        ]
+    },
+    {
+        "id": "Character_Name",
+        "text": "Enter your character's name here:",
+        "options": [
+            {"text": "Next, you will set your character's attribute points", "next_id": "Character_Creation"}
+        ]
+    },
+    {
+        "id": "Character_Creation",
+        "text": "Here you can assign your character's attribute points. You have 50 points to distribute between strength, perception, endurance, charisma, intelligence, agility, and luck. You start with 1 in each attribute and can spend the 28 points how you wish.",
+        "attributes": ["strength", "perception", "endurance","charisma", "intelligence", "agility", "luck"],
+        "options": [
+            {"text": "Set Strength", "next_id": "Character_Creation_Str"},
+            {"text": "Set Perception", "next_id": "Character_Creation_Per"},
+            {"text": "Set Endurance", "next_id": "Character_Creation_End"},
+            {"text": "Set Charisma", "next_id": "Character_Creation_Cha"},
+            {"text": "Set Intelligence", "next_id":"Character_Creation_Int"},
+            {"text": "Set Agility", "next_id": "Character_Creation_Agi"},
+            {"text": "Set Luck", "next_id": "Character_Creation_Luc"}
+            
+        ]
+    },
+    {
+        "id": "Character_Creation_Str",
+        "text": "Add points to your strength attribute. You currently have [current_points] points in strength.",
+        "options":[
+            {"text": "Increase strength by 1 (Costs 1 point)", "next_id": "Character_Creation_Str"},
+            {"text": "Continue on to the next attribute.", "next_id": "Character_Creation_Per"}
+        ]
+    },
+    {
+        "id":"Character_Creation_Per",
+        "text": "Add points to your perception attribute. You currently have [current_points] points in perception.",
+        "options":[
+            {"text": "Increase perception by 1 (Costs 1 point)", "next_id": "Character_Creation_Per"},
+            {"text": "Continue on to the next attribute.", "next_id": "Character_Creation_End"}
+        ]
+    },
+    {
+        "id":"Character_Creation_End",
+        "text": "Add points to your endurance attribute. You currently have [current_points] points in endurance.",
+        "options":[
+            {"text": "Increase endurance by 1 (Costs 1 point)", "next_id": "Character_Creation_End"},
+            {"text": "Continue on to the next attribute.", "next_id": "Character_Creation_Cha"}
+        ]
+    },
+    {
+        "id":"Character_Creation_Cha",
+        "text": "Add points to your charisma attribute. You currently have [current_points] points in charisma.",
+        "options":[
+            {"text": "Increase charisma by 1 (Costs 1 point)", "next_id": "Character_Creation_Cha"},
+            {"text": "Continue on to the next attribute.", "next_id": "Character_Creation_Int"}
+        ]
+    },
+    {
+        "id":"Character_Creation_Int",
+        "text": "Add points to your intelligence attribute. You currently have [current_points] points in intelligence.",
+        "options":[
+            {"text": "Increase intelligence by 1 (Costs 1 point)", "next_id": "Character_Creation_Int"},
+            {"text": "Continue on to the next attribute.", "next_id": "Character_Creation_Agi"}
+        ]
+    },
+    {
+        "id":"Character_Creation_Agi",
+        "text": "Add points to your agility attribute. You currently have [current_points] points in agility.",
+        "options":[
+            {"text": "Increase agility by 1 (Costs 1 point)", "next_id": "Character_Creation_Agi"},
+            {"text": "Continue on to the next attribute.", "next_id": "Character_Creation_Luc"}
+        ]
+    },
+    {
+        "id": "Character_Creation_Luc",
+        "options":[
+            {"text": "Increase Luck by 1 (Costs 1 point)", "next_id": "Character_Creation_Luc"},
+            {"text": "You have spent all of your attributes for your character. Now you can see a summary of your character.", "next_id": "Character_Creation_Summary"}
+        ]
+
+    },
+    {
+        "id": "Character_Creation_Summary",
+        "text": "Here is a summary of your character:",
+        "options":[
+            {"text": "Strength = [strength_points]", "next_id": "End_Summary"},
+            {"text": "Perception = [perception_points]", "next_id": "End_Summary"},
+            {"text": "Endurance = [endurance_points]", "next_id": "End_Summary"},
+            {"text": "Charisma = [charisma_points]", "next_id": "End_Summary"},
+            {"text": "Intelligence = [intelligence_points]", "next_id": "End_Summary"},
+            {"text": "Agility = [agility_points]", "next_id": "End_Summary"},
+            {"text": "Luck = [luck_points]", "next_id": "End_Summary"}
+        ]
+    },
+    {
+        "id": "End_Summary",
+        "text": "Your character is ready to begin their adventure. Prepare to enter the jungle!",
+        "options": [
+            {"text": "Are you ready to behgin the adventure? Let's Go!!", "next_id": "1"}
+        ]
+    },
+    {
         "id": 1,
-        "text": "You find yourself in a lush, dark jungle. You do not recall how you got there or why you are there. You get up and realize that there are two paths to take. Suddenly, you hear a voice that tells you, 'You must pass ten tests for your freedom or you will die in this jungle.' You scramble to choose either the left ot the right path, as you now realize how dire the situation is.",
+        "text": "You find yourself in a lush, dark jungle. You do not recall how you got there or why you are there. You get up and realize that there are two paths to take. Suddenly, you hear a voice that tells you, 'You must pass ten tests for your freedom or you will die in this jungle.' You scramble to choose either the left or the right path, as you now realize how dire the situation is.",
         "options": [
             {"text": "Take the left path", "next_id": 2},
             {"text": "Take the right path", "next_id": 3}
-        ]
+                ]
     },
     {
         "id": 2,
@@ -14,8 +119,9 @@
         "options": [
             {"text": "You chose the machete", "next_id": 4},
             {"text": "You chose the rope", "next_id": 5}
-        ] 
+                ] 
     },
+
     {
         "id": 3,
         "text": "The right path leads to a hole where you fall into a pit of venomous Brazilian wandering spiders. One bite will harm you, but multiple bites will kill you. Your only chance to escape to climb out of the pit or sit there and accept your fate. What will you do?",

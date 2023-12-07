@@ -129,9 +129,9 @@ sword = Weapon("Sword", 10)
 shield = Weapon("Shield", 5)
 
 #example test #still incomplete 
-adventure = Create_your_own_Adventure_game("LostintheJungle.json")
+adventure = Create_your_own_Adventure_game("gamestory_file.json")
 
-while adventure.current_level != "end":
+while adventure.current_level != "":
     adventure.display_current_level()
     choice = int(input("Enter your choice: ")) - 1  #to match list index
 
