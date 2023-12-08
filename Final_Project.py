@@ -63,27 +63,54 @@ class Adventure:
                     print(next_level['text'])
                     break
                 elif 'text' in next_level:
-                    self.current_level = next_level_id
+                    if 'attributes' in next_level:
+                        self.handle_attribute_assignment(next_level, choice)
+                    else:
+                        self.current_level = int(next_level_id) if next_level_id.isdigit() else next_level_id
                 else:
                     raise ValueError("Invalid story structure.")
+                
                 if 'text' in next_level:
                     print(next_level['text'])
+                    
                 if 'text' in next_level and 'options' in next_level:
                     for i, option in enumerate(next_level['options'], start=1):
                         print(f"{i}. {option['text']}")
-
-                if 'text' in next_level and 'options' in next_level:
-                    choice = self.get_user_choice()
-                    next_level_id = next_level['options'][choice - 1]['next_id']
-                    self.current_level = next_level_id
-
+                    
+                    while True:
+                        choice = self.get_user_choice()
+                        
+                        if 'options' in self.story[self.current_level -1]:
+                            options = self.story[self.current_level -1]['options']
+                        
+                        if 1 <= int(choice) <= len(next_level['options']):
+                            next_level_id = next_level['options'][choice - 1]['next_id']
+                            self.current_level = int(next_level_id) if next_level_id.isdigit() else next_level_id
+                            break
+                        else:
+                            print("Invalid Choice, Please enter a valid option.")
+            
             else:
                 print("Congratulations! You completed the adventure.")
                 break
+         
+                            
+                #if 'text' in next_level and 'options' in next_level:
+                    #choice = self.get_user_choice()
+                    #next_level_id = next_level['options'][choice - 1]['next_id']
+                    #self.current_level = next_level_id
+
+            
 
         print("Here's what is in your inventory:")
         print(f'You have {self.inventory["swords"]} swords in your inventory.')
         print(f'You have {self.inventory["axes"]} axes in your inventory.')
+
+def handle_attribute_assignment(self, level, choice):
+    attribute_name = level['attributes'][choice - 1]
+    
+    #implementng logic for handling attribute assignment 
+    print(f"You assigned points to {attribute_name}.")
 
 
 def load_story_from_json(filepath):
@@ -98,10 +125,13 @@ def load_story_from_json(filepath):
     """
     with open(filepath, 'r') as json_file:
         return json.load(json_file)
+    
+if __name__ == "__main__":
+    
+    json_filepath = "gamestory_file.json"
+    story = load_story_from_json(json_filepath)
+    adventure = Adventure(story)
+    adventure.play()
+    
 
-
-json_file_path = '/Users/kesiharford/Downloads/LostintheJungle.json'
-story = load_story_from_json(json_file_path)
-adventure = Adventure(story)
-adventure.play()
 
