@@ -2,10 +2,11 @@ import json
 import random
 import os
 
-# Get the absolute path of the script
+#absolute file path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Construct the absolute path to the JSON file
+""Construct the absolute path to the JSON file""
+
 filepath = os.path.join(script_dir, "LostintheJungle.json")
 
 class Weapon:
