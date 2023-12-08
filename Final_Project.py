@@ -1,60 +1,107 @@
 import json
-import random
-import os
 
-#absolute file path
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-""Construct the absolute path to the JSON file""
-
-filepath = os.path.join(script_dir, "LostintheJungle.json")
-
-class Weapon:
-    """A class representing a weapon in the game.
-    Attributes:
-        n˚†ame (str): The name of the weapon.
-        damage (int): The damage dealt by the weapon.
-    """
-    def __init__(self, name, damage):
-        """Initialize the Weapon class.
-        Args:
-            name (str): The name of the weapon.
-            damage (int): The damage dealt by the weapon.
+class Adventure:
+    def __init__(self, story):
         """
-        self.name = name
-        self.damage = damage
-
-    def __str__(self):
-        """Return a string representation of the weapon."""
-        return self.name
-
-
-class Create_your_own_Adventure_game:
-    """A class representing a text-based adventure game engine.
-    This class allows the user to create and play through their own adventure stories defined in a JSON file.
-    Managing story's progression, player attributes, and an items inventory player has to their disposal.
-
-    Attributes:
-        gamestory_file (str): The path to the JSON file containing the adventure story.
-    """
-    def __init__(self):
-        """Initialize the Create_your_own_Adventure_game class to run the JSON file containing the story with options to play.
-
-        Args:
-            gamestory_file (str): Path to the JSON File which contains the actual options for the game, to run through this engine code.
+        Initializes an Adventure instance with the provided story and sets the initial state.
+        
+        Parameters:
+        - story (list): A list representing the story data.
         """
-        self.story = self.load_story("/Users/kesiharford/Downloads/LostintheJungle.json")
-        self.player = {"name": "", "inventory": [], "attributes": {}}
-        self.current_level = "start"
+        self.story = story
+        self.current_level = 1
+        self.inventory = {'swords': 0, 'axes': 0}
 
-    def load_story(self, filepath):
-        """Load the adventure story from the provided JSON file.
+    def display_current_level(self):
+        """
+        Displays the text of the current level in the story.
+        """
+        level = self.story[self.current_level - 1]
+        print(level['text'])
 
-        Args:
-            filepath (str): Path to JSON file containing the adventure story.
+    def get_user_choice(self):
+        """
+        Gets the user's choice as input and validates it.
 
         Returns:
-            dict: A dictionary representing the loaded story data from the JSON file.
+        - int: The user's choice (1 or 2).
         """
-        with open(filepath, "r") as gamestory_file:
-            return json.load(gamestory_file)
+        while True:
+            try:
+                choice = int(input("Enter your choice (1 or 2): "))  # Accept 1 or 2
+                if choice not in [1, 2]:
+                    raise ValueError("Invalid choice. Please enter 1 or 2.")
+                return choice
+            except ValueError as e:
+                print(e)
+
+    def update_inventory(self, item):
+        """
+        Updates the inventory based on the chosen item.
+
+        Parameters:
+        - item (dict): The item dictionary containing information about the chosen item.
+        """
+        if item['text'] == 'Sword':
+            self.inventory['swords'] += 1
+        elif item['text'] == 'Axe':
+            self.inventory['axes'] += 1
+
+    def play(self):
+        """
+        Plays through the adventure story, allowing the user to make choices.
+        """
+        while self.current_level <= len(self.story):
+            self.display_current_level()
+            choice = self.get_user_choice()
+
+            if 'options' in self.story[self.current_level - 1]:
+                next_level_id = self.story[self.current_level - 1]['options'][choice - 1]['next_id']
+                next_level = next((level for level in self.story if level['id'] == next_level_id), None)
+
+                if 'text' in next_level and 'options' not in next_level:
+                    print(next_level['text'])
+                    break
+                elif 'text' in next_level:
+                    self.current_level = next_level_id
+                else:
+                    raise ValueError("Invalid story structure.")
+                if 'text' in next_level:
+                    print(next_level['text'])
+                if 'text' in next_level and 'options' in next_level:
+                    for i, option in enumerate(next_level['options'], start=1):
+                        print(f"{i}. {option['text']}")
+
+                if 'text' in next_level and 'options' in next_level:
+                    choice = self.get_user_choice()
+                    next_level_id = next_level['options'][choice - 1]['next_id']
+                    self.current_level = next_level_id
+
+            else:
+                print("Congratulations! You completed the adventure.")
+                break
+
+        print("Here's what is in your inventory:")
+        print(f'You have {self.inventory["swords"]} swords in your inventory.')
+        print(f'You have {self.inventory["axes"]} axes in your inventory.')
+
+
+def load_story_from_json(filepath):
+    """
+    Loads the story data from a JSON file.
+
+    Parameters:
+    - filepath (str): The path to the JSON file.
+
+    Returns:
+    - list: A list representing the loaded story data from the JSON file.
+    """
+    with open(filepath, 'r') as json_file:
+        return json.load(json_file)
+
+
+json_file_path = '/Users/kesiharford/Downloads/LostintheJungle.json'
+story = load_story_from_json(json_file_path)
+adventure = Adventure(story)
+adventure.play()
+
