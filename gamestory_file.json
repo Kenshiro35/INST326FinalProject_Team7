@@ -16,7 +16,7 @@
     },
     {
         "id": "Character_Creation",
-        "text": "Here you can assign your character's attribute points. You have 50 points to distribute between strength, perception, endurance, charisma, intelligence, agility, and luck. You start with 1 in each attribute and can spend the 28 points how you wish.",
+        "text": "Here you can assign your character's attribute points. You have 50 points to distribute between strength, perception, endurance, charisma, intelligence, agility, and luck. You start with 1 in each attribute and can spend the 50 points how you wish.",
         "attributes": ["strength", "perception", "endurance","charisma", "intelligence", "agility", "luck"],
         "options": [
             {"text": "Set Strength", "next_id": "Character_Creation_Str"},
@@ -107,7 +107,7 @@
     },
     {
         "id": 1,
-        "text": "You find yourself in a lush, dark jungle. You do not recall how you got there or why you are there. You get up and realize that there are two paths to take. Suddenly, you hear a voice that tells you, 'You must pass ten tests for your freedom or you will die in this jungle.' You scramble to choose either the left or the right path, as you now realize how dire the situation is.",
+        "text": "You find yourself in a lush, dark jungle. You do not recall how you got there or why you are there. You get up and realize that there are two paths to take. Suddenly, you hear an ominous, booming voice tell you, 'You must pass the tests for your freedom or you will die in this jungle.' You scramble to choose either the left or the right path, as you now realize how dire the situation is.",
         "options": [
             {"text": "Take the left path", "next_id": 2},
             {"text": "Take the right path", "next_id": 3}
@@ -115,7 +115,7 @@
     },
     {
         "id": 2,
-        "text": "The left path leads to a clearing with a white sheet holding two items that you can pick up. There is a sign that states you can only choose two items. There is a machete and a rope. You must pick one of the items to add to your inventory.",
+        "text": "The left path leads to a clearing with a white sheet holding two items that you can pick up. The voice tells you that you can only choose one of the two items. There is a machete and a rope. You must pick one of the items to add to your inventory.",
         "options": [
             {"text": "You chose the machete", "next_id": 4},
             {"text": "You chose the rope", "next_id": 5}
