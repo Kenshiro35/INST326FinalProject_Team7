@@ -1,55 +1,33 @@
 import json
-import random
-class Weapon:
-    """A class representing a weapon in the game.
-    Attributes:
-        name (str): The name of the weapon.
-        damage (int): The damage dealt by the weapon.
-    """
-    def __init__(self, name, damage):
-        """Initialize the Weapon class.
-        Args:
-            name (str): The name of the weapon.
-            damage (int): The damage dealt by the weapon.
-        """
-        self.name = name
-        self.damage = damage
 
-    def __str__(self):
-        """Return a string representation of the weapon."""
-        return self.name 
-class Create_your_own_Adventure_game:
-    """A class representing a text-based adventure game engine.
-    This class allows the user to create and play through their own adventure stories defined in a JSON file.
-    Managing story's progression, player attributes, and an items inventory player has to their disposal. 
-    
-    Attributes:
-        gamestory_file (str): The path to the JSON file containing the adventure story.
-    
-    """
-    def __init__(self, gamestory_file):
-        """Initialize the Create_your_own_Adventure_game class to run the JSON file containing the story with options to play.
-        
-        Args:
-            gamestory_file (str): Path to the JSON File which contains the actual options for the game, to run through this engine code. 
-        
+class Adventure:
+    def __init__(self, story):
         """
-        self.story = self.load_story(gamestory_file)
-        self.player = {"name": "", "inventory": [], "attributes": {}}
-        self.current_level = "start"
-    
+        Initializes an Adventure instance with the provided story and sets the initial state.
+        
+        Parameters:
+        - story (list): A list representing the story data.
+        """
+        self.story = story
+        self.current_level = 1
+        self.inventory = {'swords': 0, 'axes': 0}
 
-    def load_story(self, filepath):
-        """Load the adventure story from provided JSON file.
-        
-        Args:
-            filepath (str): Path to JSON file containing the adventure story.
-        
+    def display_current_level(self):
+        """
+        Displays the text of the current level in the story.
+        """
+        level = self.story[self.current_level - 1]
+        print(level['text'])
+
+    def get_user_choice(self):
+        """
+        Gets the user's choice as input and validates it.
+
         Returns:
             dict: A dictionary representing the loaded story data from the JSON file.
             
         """
-        with open("gamestory_file.json", "r") as gamestory_file: #used with statement method/function
+        with open(filepath, "r") as gamestory_file: #used with statement method/function
             return json.load(gamestory_file)  #used json.load() method to load a json file 
     
     
@@ -158,7 +136,7 @@ print(f"Okay {player.name}, you have {amount_of_axes} axes in your inventory.")
 sword = Weapon("Sword", 10)
 shield = Weapon("Shield", 5)
 
-
+#example test #still incomplete 
 adventure = Create_your_own_Adventure_game("gamestory_file.json")
 
 while adventure.current_level != "":
