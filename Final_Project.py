@@ -49,7 +49,7 @@ class Create_your_own_Adventure_game:
             dict: A dictionary representing the loaded story data from the JSON file.
             
         """
-        with open(filepath, "r") as gamestory_file: #used with statement method/function
+        with open("gamestory_file.json", "r") as gamestory_file: #used with statement method/function
             return json.load(gamestory_file)  #used json.load() method to load a json file 
     
     
@@ -158,7 +158,7 @@ print(f"Okay {player.name}, you have {amount_of_axes} axes in your inventory.")
 sword = Weapon("Sword", 10)
 shield = Weapon("Shield", 5)
 
-#example test #still incomplete 
+
 adventure = Create_your_own_Adventure_game("gamestory_file.json")
 
 while adventure.current_level != "":
