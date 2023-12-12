@@ -1,18 +1,20 @@
 import json
 
-
 class Adventure:
+    """
+    A class representing our adventure game.
+    """
+
     def __init__(self, story):
         """
         Initializes an Adventure instance with the provided story and sets the initial state.
-       
+
         Parameters:
         - story (list): A list representing the story data.
         """
         self.story = story
         self.current_level = 1
         self.inventory = {'swords': 0, 'axes': 0}
-
 
     def display_current_level(self):
         """
@@ -21,34 +23,25 @@ class Adventure:
         level = self.story[self.current_level - 1]
         print(level['text'])
 
-
     def get_user_choice(self):
         """
         Gets the user's choice as input and validates it.
-
 
         Returns:
         - int: The user's choice (1 or 2).
         """
         while True:
             try:
-                if self.current_level == 2:  
-                    choice = input("Enter your character's name: ")
-                    return choice
-                else:
-                    
-                    choice = int(input("Enter your choice (1 or 2): "))  # Accept 1 or 2
-                    if choice not in [1, 2]:
-                        raise ValueError("Invalid choice. Please enter 1 or 2.")
-                    return choice
+                choice = int(input("Enter your choice (1 or 2): "))  # Accept 1 or 2
+                if choice not in [1, 2]:
+                    raise ValueError("Invalid choice. Please enter 1 or 2.")
+                return choice
             except ValueError as e:
                 print(e)
-
 
     def update_inventory(self, item):
         """
         Updates the inventory based on the chosen item.
-
 
         Parameters:
         - item (dict): The item dictionary containing information about the chosen item.
@@ -58,6 +51,51 @@ class Adventure:
         elif item['text'] == 'Axe':
             self.inventory['axes'] += 1
 
+    def load_story_from_json(self, file_path):
+        """
+        Loads the story data from a JSON file.
+
+        Parameters:
+        - file_path (str): The path to the JSON file.
+        """
+        with open(file_path, 'r') as json_file:
+            self.story = json.load(json_file)
+
+    def evaluate_attribute_points(self):
+        """
+        Evaluates the overall performance of the character based on attribute points.
+
+        Returns:
+        - str: The evaluation result.
+        """
+        total_points = sum(self.story[2]['attributes'].values())
+        result = "Excellent" if total_points >= 35 else "Good" if total_points >= 20 else "Needs Improvement"
+        return f"Character's attribute points evaluation: {result}"
+
+    def enter_temple(self, name, location="Jungle Temple"):
+        """
+        Enters a temple at a specified location.
+
+        Parameters:
+        - name (str): The name of the character.
+        - location (str, optional): The location of the temple. Defaults to "Jungle Temple".
+
+        Returns:
+        - str: A message indicating the character's entry into the temple.
+        """
+        return f"{name} enters the {location}. The air inside is thick with mystery and anticipation."
+
+    def manage_inventory(self, item):
+        """
+        Updates the inventory based on the chosen item.
+
+        Parameters:
+        - item (dict): The item dictionary containing information about the chosen item.
+        """
+        if item['text'] == 'Sword':
+            self.inventory['swords'] += 1
+        elif item['text'] == 'Axe':
+            self.inventory['axes'] += 1
 
     def play(self):
         """
@@ -67,92 +105,38 @@ class Adventure:
             self.display_current_level()
             choice = self.get_user_choice()
 
-
             if 'options' in self.story[self.current_level - 1]:
-                options = self.story[self.current_level - 1]["options"]
-                
-                next_level_id = options[choice - 1]['next_id']
+                next_level_id = self.story[self.current_level - 1]['options'][choice - 1]['next_id']
                 next_level = next((level for level in self.story if level['id'] == next_level_id), None)
-
 
                 if 'text' in next_level and 'options' not in next_level:
                     print(next_level['text'])
-                    break
+                    break  # End of the game
                 elif 'text' in next_level:
-                    if 'attributes' in next_level:
-                        self.handle_attribute_assignment(next_level, choice)
-                    else:
-                        if next_level_id.isdigit():
-                            self.current_level = int(next_level_id)
-                        else:
-                            self.current_level = next_level_id
-                
-                
+                    self.current_level = next_level_id
+                else:
+                    raise ValueError("Invalid story structure.")
                 if 'text' in next_level:
                     print(next_level['text'])
-                   
-                if 'text' in next_level and 'options' in next_level:                   
-                    while True:
-                        choice = self.get_user_choice()
-                       
-                        if options:
-                            if 1 <= choice <= len(next_level['options']):
-                                next_level_id = next_level['options'][choice - 1]['next_id']
-                                self.current_level = int(next_level_id) if next_level_id.isdigit() else next_level_id
-                                break
-                            else:
-                                print("Invalid Choice, Please enter a valid option.")
-                       
-                       
-           
+                if 'text' in next_level and 'options' in next_level:
+                    for i, option in enumerate(next_level['options'], start=1):
+                        print(f"{i}. {option['text']}")
+
+                if 'text' in next_level and 'options' in next_level:
+                    choice = self.get_user_choice()
+                    next_level_id = next_level['options'][choice - 1]['next_id']
+                    self.current_level = next_level_id
+
             else:
                 print("Congratulations! You completed the adventure.")
                 break
-    
 
         print("Here's what is in your inventory:")
         print(f'You have {self.inventory["swords"]} swords in your inventory.')
         print(f'You have {self.inventory["axes"]} axes in your inventory.')
 
 
-def handle_attribute_assignment(self, level, choice):
-    """Handles the assignment of points to a specific attribute based on provided level and choice of player.
-    
-    Paramaters:
-        level (dict): A dictionary representing the current level, containing 'attributes' as a key.
-        choice (int): A integer representing the user choice for attribute assignment.
-        
-    returns:
-        none
-    
-    
-    """
-    attribute_name = level['attributes'][choice]
-   
-    #implementng logic for handling attribute assignment
-    print(f"You assigned points to {attribute_name}.")
-
-
-
-
-def load_story_from_json(filepath):
-    """
-    Loads the story data from a JSON file.
-
-
-    Parameters:
-    - filepath (str): The path to the JSON file.
-
-
-    Returns:
-    - list: A list representing the loaded story data from the JSON file.
-    """
-    with open(filepath, 'r') as json_file:
-        return json.load(json_file)
-   
-if __name__ == "__main__":
-   
-    json_filepath = "gamestory_file.json"
-    story = load_story_from_json(json_filepath)
-    adventure = Adventure(story)
-    adventure.play()
+json_file_path = '/Users/kesiharford/Downloads/LostintheJungle.json'
+adventure = Adventure([])
+adventure.load_story_from_json(json_file_path)
+adventure.play()
