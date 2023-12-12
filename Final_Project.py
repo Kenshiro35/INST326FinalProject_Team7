@@ -71,6 +71,7 @@ class Adventure:
         str: The player's name
         """
         return input("Enter the character's name:  ")
+    
     def enter_temple(self, name, location="Jungle Temple"):
         """
         Enters a temple at a specified location.
@@ -101,6 +102,7 @@ class Adventure:
         """
         Plays through the adventure story, allowing the user to make choices.
         """
+        player_name = self.get_players_name()
         
         while self.current_level <= len(self.story):
             self.display_current_level()
@@ -132,9 +134,9 @@ class Adventure:
                 print("Congratulations! You completed the adventure.")
                 break
 
-        print(f"{character_name}, here's what is in your inventory:")
-        print(f'{character_name} has {self.inventory["sword"]} in their inventory.')
-        print(f'{character_name} has {self.inventory["axe"]} in their inventory.')
+        print(f"{player_name}, here's what is in your inventory:")
+        print(f'{player_name} has {self.inventory["sword"]} in their inventory.')
+        print(f'{player_name} has {self.inventory["axe"]} in their inventory.')
 
 
 json_file_path = 'jungle.json'
