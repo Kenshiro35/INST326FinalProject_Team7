@@ -71,6 +71,17 @@ class Adventure:
         str: The player's name
         """
         return input("Enter the character's name:  ")
+
+    def evaluate_attribute_points(self):
+        """
+        Evaluates the overall performance of the character based on attribute points.
+        Returns:
+        - str: The evaluation result.
+        """
+        total_points = sum(self.story[2]['attributes'].values())
+        result = "Excellent" if total_points >= 35 else "Good" if total_points >= 20 else "Needs Improvement"
+        return f"Character's attribute points evaluation: {result}"
+
     
     def enter_temple(self, name, location="Jungle Temple"):
         """
