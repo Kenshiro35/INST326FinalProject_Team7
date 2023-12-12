@@ -23,7 +23,7 @@ class Adventure:
         level = self.story[self.current_level - 1]
         print(level['text'])
 
-    def get_user_choice(self):
+    def get_user_choice(self, num_options=2):
         """
         Gets the user's choice as input and validates it.
 
@@ -32,10 +32,11 @@ class Adventure:
         """
         while True:
             try:
-                choice = int(input("Enter your choice (1 or 2): "))  # Accept 1 or 2
-                if choice not in [1, 2]:
+                choice = int(input("Enter your choice (1 to {num_options}): "))  # Accept 1 or 2
+                if 1 <= choice <= num_options:
+                    return choice
+                else:
                     raise ValueError("Invalid choice. Please enter 1 or 2.")
-                return choice
             except ValueError as e:
                 print(e)
 
@@ -62,9 +63,10 @@ class Adventure:
             self.story = json.load(json_file)
             
         if self.story and len(self.story) > 0:
-            player_name = self.get_players_name()
+            player_name = input("Enter the name of your character:  ")
             self.story[0]["text"] = self.story[0]["text"].replace("<player_name>", player_name)
-
+            
+            
     def evaluate_attribute_points(self):
         """
         Evaluates the overall performance of the character based on attribute points.
@@ -106,7 +108,7 @@ class Adventure:
         """
         Plays through the adventure story, allowing the user to make choices.
         """
-        player_name = self.get_players_name()
+        player_name = input("Enter the name of your character: ")
         
         while self.current_level <= len(self.story):
             self.display_current_level()
