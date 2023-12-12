@@ -65,13 +65,6 @@ class Adventure:
             player_name = self.get_players_name()
             self.story[0]["text"] = self.story[0]["text"].replace("<player_name>", player_name)
 
-    def get_players_name(self):
-        """Takes user input for the player's name
-        Returns:
-        str: The player's name
-        """
-        return input("Enter the character's name:  ")
-
     def evaluate_attribute_points(self):
         """
         Evaluates the overall performance of the character based on attribute points.
