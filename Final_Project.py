@@ -14,7 +14,7 @@ class Adventure:
         """
         self.story = story
         self.current_level = 1
-        self.inventory = {'swords': 0, 'axes': 0}
+        self.inventory = {'sword': 0, 'axe': 0}
 
     def display_current_level(self):
         """
@@ -40,16 +40,16 @@ class Adventure:
                 print(e)
 
     def update_inventory(self, item):
-        """
-        Updates the inventory based on the chosen item.
+        """Updates the inventory based on the chosen item.
 
         Parameters:
         - item (dict): The item dictionary containing information about the chosen item.
         """
-        if item['text'] == 'Sword':
-            self.inventory['swords'] += 1
-        elif item['text'] == 'Axe':
-            self.inventory['axes'] += 1
+        if item['type'] == 'weapon':
+           if item['text'] == 'Ebony Blade':
+               self.inventory['sword'] += 1
+        elif item['text'] == 'Axe of the Accuser':
+           self.inventory['axe'] += 1
 
     def load_story_from_json(self, file_path):
         """
@@ -60,18 +60,17 @@ class Adventure:
         """
         with open(file_path, 'r') as json_file:
             self.story = json.load(json_file)
+            
+        if self.story and len(self.story) > 0:
+            player_name = self.get_players_name()
+            self.story[0]["text"] = self.story[0]["text"].replace("<player_name>", player_name)
 
-    def evaluate_attribute_points(self):
-        """
-        Evaluates the overall performance of the character based on attribute points.
-
+    def get_players_name(self):
+        """Takes user input for the player's name
         Returns:
-        - str: The evaluation result.
+        str: The player's name
         """
-        total_points = sum(self.story[2]['attributes'].values())
-        result = "Excellent" if total_points >= 35 else "Good" if total_points >= 20 else "Needs Improvement"
-        return f"Character's attribute points evaluation: {result}"
-
+        return input("Enter the character's name:  ")
     def enter_temple(self, name, location="Jungle Temple"):
         """
         Enters a temple at a specified location.
@@ -83,6 +82,7 @@ class Adventure:
         Returns:
         - str: A message indicating the character's entry into the temple.
         """
+        entry_line = self.story[0]["text"].replace('<player_name>', name)
         return f"{name} enters the {location}. The air inside is thick with mystery and anticipation."
 
     def manage_inventory(self, item):
@@ -92,15 +92,16 @@ class Adventure:
         Parameters:
         - item (dict): The item dictionary containing information about the chosen item.
         """
-        if item['text'] == 'Sword':
-            self.inventory['swords'] += 1
-        elif item['text'] == 'Axe':
-            self.inventory['axes'] += 1
+        if item['type'] == 'weapon':
+           self.update_inventory(item)
+        elif item['type'] == 'utility':
+           self.update_inventory(item)
 
     def play(self):
         """
         Plays through the adventure story, allowing the user to make choices.
         """
+        
         while self.current_level <= len(self.story):
             self.display_current_level()
             choice = self.get_user_choice()
@@ -131,12 +132,13 @@ class Adventure:
                 print("Congratulations! You completed the adventure.")
                 break
 
-        print("Here's what is in your inventory:")
-        print(f'You have {self.inventory["swords"]} swords in your inventory.')
-        print(f'You have {self.inventory["axes"]} axes in your inventory.')
+        print(f"{character_name}, here's what is in your inventory:")
+        print(f'{character_name} has {self.inventory["sword"]} in their inventory.')
+        print(f'{character_name} has {self.inventory["axe"]} in their inventory.')
 
 
-json_file_path = '/Users/kesiharford/Downloads/LostintheJungle.json'
+json_file_path = 'jungle.json'
 adventure = Adventure([])
 adventure.load_story_from_json(json_file_path)
 adventure.play()
+adventure.update_inventory()
